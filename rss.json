@@ -1,0 +1,47 @@
+{
+  "cnn": {
+		"top": "http://rss.cnn.com/rss/cnn_topstories.rss",
+		"world": "http://rss.cnn.com/rss/cnn_world.rss",
+		"US": "http://rss.cnn.com/rss/cnn_us.rss",
+		"business": "http://rss.cnn.com/rss/money_latest.rss",
+		"politics": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+		"technology": "http://rss.cnn.com/rss/cnn_tech.rss",
+		"health": "http://rss.cnn.com/rss/cnn_health.rss",
+		"entertainment": "http://rss.cnn.com/rss/cnn_showbiz.rss",
+		"travel": "http://rss.cnn.com/rss/cnn_travel.rss",
+		"video": "http://rss.cnn.com/rss/cnn_freevideo.rss",
+		"recent": "http://rss.cnn.com/rss/cnn_latest.rss"
+	},
+  "nyt": {
+		"World": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+		"Africa": "https://rss.nytimes.com/services/xml/rss/nyt/Africa.xml",
+		"Americas": "https://rss.nytimes.com/services/xml/rss/nyt/Americas.xml",
+		"Asia_Pacific": "https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml",
+		"Europe": "https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml",
+		"Middle_East": "https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml",
+		"US": "https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+		"Education": "https://rss.nytimes.com/services/xml/rss/nyt/Education.xml",
+		"Politics": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+		"Business": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+		"Energy_&_Environment": "https://rss.nytimes.com/services/xml/rss/nyt/EnergyEnvironment.xml",
+		"Small_Business": "https://rss.nytimes.com/services/xml/rss/nyt/SmallBusiness.xml",
+		"Economy": "https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml",
+		"DealBook": "https://rss.nytimes.com/services/xml/rss/nyt/Dealbook.xml",
+		"Media_&_Advertising": "https://rss.nytimes.com/services/xml/rss/nyt/MediaandAdvertising.xml",
+		"Your_Money": "https://rss.nytimes.com/services/xml/rss/nyt/YourMoney.xml",
+		"Technology": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+		"Personal_Tech": 	"https://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml",
+		"Sports": "https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml",
+		"Science": "https://rss.nytimes.com/services/xml/rss/nyt/Science.xml",
+		"Environment": "https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml",
+		"Space_&_Cosmos": "https://rss.nytimes.com/services/xml/rss/nyt/Space.xml",
+		"Health": "https://www.nytimes.com/services/xml/rss/nyt/Health.xml",
+		"Well_Blog": "https://rss.nytimes.com/services/xml/rss/nyt/Well.xml"
+  },
+  "wp": {
+    "world": "https://feeds.washingtonpost.com/rss/world"
+  },
+  "abc": {
+    "International": "https://abcnews.go.com/abcnews/internationalheadlines"
+  }
+}
