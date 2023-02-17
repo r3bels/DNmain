@@ -1,0 +1,44 @@
+const { SlashCommandBuilder, ChannelType, PermissionFlagsBits } = require('discord.js');
+const { writeFile } = require("node:fs");
+const ids = require('../loadFiles/ids.json');
+const names = Object.keys(ids);
+
+const data = new SlashCommandBuilder()
+	.setName('hourly_set')
+	.setDescription('Sets the channel to post a source of hourly news')
+	.addStringOption(option =>
+		option.setName('news_source')
+			.setDescription('The news category for hourly news')
+			.setRequired(true)
+	)
+	.addChannelOption(option =>
+		option.setName('channel')
+			.setDescription('The channel to post hourly news to')
+			// Ensure the user can only select a TextChannel for output
+			.addChannelTypes(ChannelType.GuildText)
+			.setRequired(true)
+	)
+	.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels);
+
+// gets all of the source names from rss.json and adds those as choices
+for (let i = 0; i < names.length; i++) {
+	data.options[0].addChoices({ name: names[i], value: names[i] });
+}
+
+module.exports = {
+	data: data,
+	async execute(interaction) {
+		let channel = interaction.options.getChannel("channel");
+		let newsSource = interaction.options.getString("news_source");
+		let channelId = channel.id;
+		let channelIds = ids[newsSource].ids;
+		if (channelIds.includes(channelId)){
+			await interaction.reply(`The hourly news for ${newsSource} is already set for ${channel}`);
+		} else {
+			channelIds.push(channelId);
+			writeFile('./loadFiles/ids.json', JSON.stringify(ids), (err) => { if (err) { console.log(err) } });
+			await interaction.deferReply();
+			await interaction.followUp(`Setting channel ${channel} for ${newsSource}`);
+		}
+	}
+};

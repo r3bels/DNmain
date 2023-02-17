@@ -1,0 +1,19 @@
+const { SlashCommandBuilder } = require('discord.js');
+const execFileSync = require('child_process').execFileSync;
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('refresh_commands')
+		.setDescription('Refresh the application commands')
+		.setDefaultMemberPermissions(0),
+	async execute(interaction) {
+		const id = interaction.user.id;
+		if (id == '664901925497733136' || id == '659600321282048010') {
+			const stdout = execFileSync('node', ['deploy_commands.js'], { timeout: 600000 });
+			await interaction.deferReply({ ephemeral: true });
+			await interaction.followUp(`Console outputed:\n${stdout.toString()}\nRestarting bot`);
+		} else {
+			await interaction.reply("You are not allowed to refresh commands");
+		}
+	},
+};

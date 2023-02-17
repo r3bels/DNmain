@@ -1,0 +1,50 @@
+const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ComponentType, } = require('discord.js');
+
+const data = new SlashCommandBuilder()
+	.setName('news')
+	.setDescription('Sends a preferred news article!')
+	.addStringOption(option =>
+		option.setName('source')
+			.setDescription('The news category')
+			.setRequired(true)
+			.addChoices(
+				{ name: 'CNN', value: "cnn" },
+				{ name: 'New York Times', value: 'nyt' },
+				{ name: 'Washington Post', value: 'wp' },
+			)
+	)
+	.addStringOption(option =>
+		option.setName('type')
+			.setDescription('a type')
+	);
+
+const row = new ActionRowBuilder()
+	.addComponents(
+		new StringSelectMenuBuilder()
+			.setCustomId('select')
+			.setPlaceholder('Nothing selected')
+			.addOptions(
+				{
+					label: 'Select me',
+					description: 'This is a description',
+					value: 'first_option',
+				},
+				{
+					label: 'You can select me too',
+					description: 'This is also a description',
+					value: 'second_option',
+				},
+			),
+	);
+
+module.exports = {
+	data: data,
+	async execute(interaction) {
+		// await interaction.reply({ content: `Sending news from ${interaction.options.getString("source")}`, components: [row] });
+		await interaction.reply({ content: `Sending news from ${interaction.options.getString("source")}`, components: [row] });
+		let mess = await interaction.fetchReply();
+		mess.awaitMessageComponent({ ComponentType: ComponentType.StringSelect, time: 10000 }).then(interaction => {
+			interaction.update({content: `You selected ${interaction.values[0]}!`, components: []})
+		}).catch(err => console.log(`No interactions were collected.`));
+	},
+}
