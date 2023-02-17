@@ -16,7 +16,7 @@ module.exports = {
 				let ids = source['ids'];
 				parser.parse(source['link']).then(embed => {
 					for (id of ids) {
-						client.channels.fetch(id)?.then(channel => {
+						client.channels.fetch(id).then(channel => {
 							channel.send({ embeds: [embed] });
 						}).catch(err => console.log(err));
 					}
