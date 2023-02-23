@@ -57,6 +57,15 @@ async function set(interaction) {
 	if (channelIds.includes(channelId)) {
 		await interaction.reply(`The hourly news for ${newsSource} is already set for ${channel}`);
 	} else {
+		// checking to test that the bot has the permissions to post to the bot
+		try {
+			channel.send("testing");
+		} catch (err) {
+			await interaction.reply(`Could not post to ${newsSource}, check that the bot has the permissions to view and post to ${newsSource}`);
+			return;
+		}
+		
+		// adding the channel to ids.json
 		channelIds.push(channelId);
 		writeFile('./loadFiles/ids.json', JSON.stringify(ids), (err) => { if (err) { console.log(err) } });
 		await interaction.deferReply();
