@@ -55,10 +55,12 @@ async function set(interaction) {
 	let channelId = channel.id;
 	let channelIds = ids[newsSource].ids;
 	if (channelIds.includes(channelId)) {
+		console.log("Point: C_H_S_1");
 		await interaction.reply(`The hourly news for ${newsSource} is already set for ${channel}`);
 	} else {
 		channelIds.push(channelId);
 		writeFile('./loadFiles/ids.json', JSON.stringify(ids), (err) => { if (err) { console.log(err) } });
+		console.log("Point: C_H_S_2");
 		await interaction.deferReply();
 		await interaction.followUp(`Setting channel ${channel} for ${newsSource}`);
 	}
@@ -77,6 +79,7 @@ async function remove(interaction) {
 				channelIds.splice(index, 1);
 			}
 		}
+		console.log("Point: C_H_R_1");
 		await interaction.followUp(`Removed all hourly sources from ${channel}`);
 		writeFile('./loadFiles/ids.json', JSON.stringify(ids), (err) => { if (err) { console.log(err) } });
 	} else {
@@ -85,8 +88,10 @@ async function remove(interaction) {
 		await interaction.deferReply();
 		if (index != -1) {
 			channelIds.splice(index, 1);
+		console.log("Point: C_H_R_2");
 			await interaction.followUp(`Removed hourly ${newsSource} from ${channel}`);
 		} else {
+		console.log("Point: C_H_R_3");
 			await interaction.followUp(`${channel} does not have ${newsSource} set`);
 		}
 		writeFile('./loadFiles/ids.json', JSON.stringify(ids), (err) => { if (err) { console.log(err) } });

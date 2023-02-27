@@ -27,6 +27,7 @@ const embed = new EmbedBuilder()
 module.exports = {
 	data: data,
 	async execute(interaction) {
+		console.log("Point: C_H_1");
 		await interaction.reply({embeds: [embed]});
 	},
 };

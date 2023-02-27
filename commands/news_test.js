@@ -44,14 +44,17 @@ module.exports = {
 			// no additional source choice
 			parse(defaults[source].link).then(embed => {
 				if (embed == undefined) {
+					console.log("Point: C_N_1");
 					try {interaction.followUp("Could not parse this source")}
 					catch (e) {console.log(e)}
 				} else {
+					console.log("Point: C_N_2");
 					try {interaction.followUp({ embeds: [embed] })}
 					catch (e) {console.log(e)}
 				}
 			});
 		} else {
+			console.log("Point: C_N_3");
 			await interaction.followUp({ content: `Sending news from ${source}`, components: [row] });
 			let message = await interaction.fetchReply();
 
@@ -59,16 +62,20 @@ module.exports = {
 			message.awaitMessageComponent({ ComponentType: ComponentType.StringSelect, time: 20000 }).then(interaction => {
 				parse(interaction.values[0]).then(embed => {
 					if (embed == undefined) {
+						console.log("Point: C_N_4");
 						interaction.update({ content: "Could not parse this source", components: [] });
 					} else {
+						console.log("Point: C_N_5");
 						interaction.update({ embeds: [embed], components: [] });
 					}
 
 				}).catch(err => {
+					console.log("Point: C_N_6");
 					interaction.update({ content: "Could not parse this source", components: [] });
 					console.error(err);
 				});
 			}).catch(err => {
+				console.log("Point: C_N_7");
 				interaction.editReply({ content: "No source was selected", components: [] });
 			});
 		}

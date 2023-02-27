@@ -28,6 +28,7 @@ const embed = new EmbedBuilder()
 module.exports = {
 	data: data,
 	async execute(interaction) {
+		console.log("Point: C_BR_1");
 		await interaction.showModal(modal);
 		// Collect a modal submit interaction
 		interaction.awaitModalSubmit({ time: 60000 })
@@ -35,7 +36,9 @@ module.exports = {
 				let submission = modalInteraction.components[0].components[0].value;
 				let user = modalInteraction.user;
 				embed.setDescription(`${bold(`Bug report from ${user}`)}\n${submission}`);
+				console.log("Point: C_BR_2");
 				modalInteraction.reply("Your report was successfully submitted!");
+				console.log("Point: C_BR_3");
 				reportChannel.send({embeds: [embed]});
 			})
 			.catch(console.error);
