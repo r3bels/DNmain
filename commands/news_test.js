@@ -45,12 +45,12 @@ module.exports = {
 			parse(defaults[source].link).then(embed => {
 				if (embed == undefined) {
 					console.log("Point: C_N_2");
-					try {interaction.followUp("Could not parse this source")}
-					catch (e) {console.log(e)}
+					try { interaction.followUp("Could not parse this source") }
+					catch (e) { console.log(e) }
 				} else {
 					console.log("Point: C_N_1");
-					try {interaction.followUp({ embeds: [embed] })}
-					catch (e) {console.log(e)}
+					try { interaction.followUp({ embeds: [embed] }) }
+					catch (e) { console.log(e) }
 				}
 			});
 		} else {

@@ -20,7 +20,7 @@ module.exports = {
 							console.log("Point: F_H_1");
 							try {
 								channel.send({ embeds: [embed] });
-							} catch (err) {console.log(err)};
+							} catch (err) { console.log(err) };
 						}).catch(err => console.log(err));
 					}
 				});
