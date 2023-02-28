@@ -1,5 +1,6 @@
 const parser = require('./parser.js');
 const ids = require("../loadFiles/ids.json");
+const { PermissionsBitField } = require('discord.js');
 
 module.exports = {
 	execute(clientArg) {
@@ -18,9 +19,12 @@ module.exports = {
 					for (id of ids) {
 						client.channels.fetch(id)?.then(channel => {
 							console.log("Point: F_H_1");
+							let perms = channel.guild.members.me.permissionsIn(channel);
 							try {
-								channel.send({ embeds: [embed] });
-							} catch (err) { console.log(err) };
+								if (perms.has([PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages])){
+									channel.send({ embeds: [embed] });
+								}
+							} catch (err) { console.log(err); console.log(perms.serialize()) };
 						}).catch(err => console.log(err));
 					}
 				});
