@@ -20,12 +20,13 @@ module.exports = {
 						client.channels.fetch(id)?.then(channel => {
 							console.log("Point: F_H_1");
 							let perms = channel.guild.members.me.permissionsIn(channel);
+							console.log(perms.has(PermissionsBitField.Flags.ViewChannel));
 							try {
-								if (perms.has([PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages])){
+								if (perms.has([PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages])) {
 									channel.send({ embeds: [embed] });
 								}
 							} catch (err) { console.log(err); console.log(perms.serialize()) };
-						}).catch(err => console.log(err));
+						}).catch(err => { console.log("top level"); console.log(err) });
 					}
 				});
 			}
