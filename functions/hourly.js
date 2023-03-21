@@ -18,7 +18,7 @@ module.exports = {
 				parser.parse(source['link']).then(embed => {
 					for (id of ids) {
 						try {
-							client.channels.fetch(id)?.then(channel => {
+							client?.channels.fetch(id).then(channel => {
 								console.log("Point: F_H_1");
 								let perms = channel.guild.members.me.permissionsIn(channel);
 								try {

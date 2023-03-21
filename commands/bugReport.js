@@ -31,7 +31,7 @@ module.exports = {
 		console.log("Point: C_BR_1");
 		await interaction.showModal(modal);
 		// Collect a modal submit interaction
-		interaction.awaitModalSubmit({ time: 60000 })
+		interaction.awaitModalSubmit({ time: 120000 })
 			.then(modalInteraction => {
 				let submission = modalInteraction.components[0].components[0].value;
 				let user = modalInteraction.user;
